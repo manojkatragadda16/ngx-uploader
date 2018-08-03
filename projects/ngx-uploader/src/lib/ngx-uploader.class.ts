@@ -233,7 +233,7 @@ export class NgUploaderService {
         file.form.append(event.fieldName || 'file', uploadFile, uploadFile.name);
 
         this.serviceEvents.emit({ type: 'start', file: file });
-        xhr.send(file.form);
+        xhr.send(uploadFile); // Needed for S3 upload fix
       } catch (e) {
         observer.complete();
       }
